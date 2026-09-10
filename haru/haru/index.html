@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2f6b45">
+<title>하루글쓰기</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;
+  background:#f3f8f4;
+  color:#173426;
+}
+.app{
+  max-width:620px;
+  margin:auto;
+  min-height:100vh;
+  background:#fbfefb;
+}
+.lock{
+  position:fixed;
+  inset:0;
+  z-index:99;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:linear-gradient(145deg,#e7f5e9,#f9fff9);
+}
+.lockbox{
+  width:min(390px,100%);
+  background:white;
+  padding:30px 22px;
+  border-radius:28px;
+  text-align:center;
+  box-shadow:0 18px 50px #275d3730;
+}
+.leaf{font-size:48px}
+.lock h2{margin:8px 0;color:#285e3d}
+.lock p{color:#6d7e72;font-size:14px}
+.lock input{
+  width:100%;
+  padding:15px;
+  border:1px solid #cfe1d3;
+  border-radius:14px;
+  text-align:center;
+  font-size:20px;
+  letter-spacing:6px;
+  margin:12px 0;
+}
+.lock button,.primary{
+  border:0;
+  background:#2f6b45;
+  color:white;
+  font-weight:800;
+  border-radius:14px;
+  padding:14px 18px;
+}
+.lock button{width:100%;font-size:16px}
+
+header{
+  padding:28px 20px 22px;
+  background:linear-gradient(145deg,#285e3d,#3f7d55);
+  color:white;
+  border-radius:0 0 32px 32px;
+}
+header .eyebrow{font-size:13px;opacity:.86}
+h1{margin:5px 0 6px;font-size:29px}
+header p{margin:0;font-size:14px;opacity:.9}
+
+.tabs{
+  position:sticky;
+  top:0;
+  z-index:8;
+  display:flex;
+  gap:8px;
+  padding:11px;
+  background:#fbfefbef;
+  backdrop-filter:blur(10px);
+}
+.tabs button{
+  flex:1;
+  border:0;
+  border-radius:13px;
+  padding:11px;
+  background:#e5f1e7;
+  color:#315840;
+  font-weight:800;
+}
+.tabs button.on{
+  background:#2f6b45;
+  color:white;
+}
+
+main{padding:5px 16px 30px}
+.hide{display:none}
+
+.card{
+  background:white;
+  border:1px solid #dceade;
+  border-radius:22px;
+  padding:17px;
+  margin:12px 0;
+  box-shadow:0 7px 20px #224d2f0d;
+}
+.label{
+  font-weight:800;
+  margin:7px 0 6px;
+  color:#285e3d;
+}
+.hint{font-size:12px;color:#7c8e80}
+.dateRow{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:10px;
+}
+.input,textarea{
+  width:100%;
+  border:1px solid #cfe1d3;
+  border-radius:14px;
+  background:#fbfefb;
+  padding:13px;
+  font:inherit;
+  color:#173426;
+}
+textarea{
+  min-height:230px;
+  resize:vertical;
+  line-height:1.8;
+  background-image:linear-gradient(transparent 95%,#e4eee6 95%);
+  background-size:100% 1.8em;
+}
+
+.photoBox{
+  border:2px dashed #b8d2bd;
+  border-radius:18px;
+  overflow:hidden;
+  background:#edf6ef;
+  min-height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.photoBox img{
+  width:100%;
+  max-height:390px;
+  object-fit:cover;
+}
+.photoPlaceholder{
+  text-align:center;
+  color:#66816c;
+  padding:30px;
+}
+.photoPlaceholder b{
+  display:block;
+  font-size:35px;
+  margin-bottom:8px;
+}
+.photoBtn{
+  display:block;
+  margin-top:10px;
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:14px;
+  background:#dceee0;
+  color:#285e3d;
+  font-weight:800;
+}
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:12px;
+}
+.secondary{
+  border:0;
+  border-radius:14px;
+  padding:13px;
+  background:#e8f3ea;
+  color:#2c6140;
+  font-weight:800;
+}
+.primary{width:100%;font-size:16px}
+.counter{
+  text-align:right;
+  font-size:12px;
+  color:#768778;
+  margin-top:5px;
+}
+.empty{
+  text-align:center;
+  padding:45px 15px;
+  color:#7e9182;
+}
+.entry img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:16px;
+}
+.meta{margin:12px 0 6px}
+.meta b{font-size:18px}
+.place{font-size:13px;color:#66816c}
+.text{
+  white-space:pre-wrap;
+  line-height:1.65;
+  font-size:14px;
+  background:#f4f9f5;
+  padding:13px;
+  border-radius:14px;
+}
+.miniBtns{
+  display:flex;
+  gap:7px;
+  margin-top:11px;
+}
+.miniBtns button{
+  border:0;
+  border-radius:12px;
+  padding:9px 12px;
+  font-weight:700;
+  background:#e8f3ea;
+  color:#2f6b45;
+}
+.miniBtns button.danger{
+  background:#fbecec;
+  color:#9a3d3d;
+}
+.statgrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.stat{
+  background:#e9f4eb;
+  border-radius:17px;
+  padding:15px 8px;
+  text-align:center;
+}
+.stat strong{
+  display:block;
+  font-size:24px;
+  color:#285e3d;
+}
+.quote{
+  text-align:center;
+  color:#496a53;
+  line-height:1.7;
+  padding:8px;
+}
+.footer{
+  text-align:center;
+  color:#78907e;
+  font-size:12px;
+  padding:8px 0 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="lock" id="lock">
+  <div class="lockbox">
+    <div class="leaf">🌿</div>
+    <h2>하루글쓰기</h2>
+    <p>오늘의 한 장면을 사진과 열 줄로 남겨요.</p>
+
+    <input id="pw"
+           type="password"
+           inputmode="numeric"
+           maxlength="4"
+           placeholder="••••">
+
+    <button id="unlock">들어가기</button>
+
+    <div id="pwmsg"
+         style="color:#a33;font-size:13px;margin-top:8px;min-height:18px">
+    </div>
+  </div>
+</div>
+
+<div class="app">
+
+<header>
+  <div class="eyebrow">ONE DAY · ONE PLACE · TEN LINES</div>
+  <h1>🌿 하루글쓰기</h1>
+  <p>하루 동안 마음에 남은 장소 한 곳을 기록합니다.</p>
+</header>
+
+<div class="tabs">
+  <button class="on" data-tab="write">오늘 쓰기</button>
+  <button data-tab="archive">기록 보기</button>
+  <button data-tab="stats">나의 기록</button>
+</div>
+
+<main id="write">
+
+<div class="card">
+
+<div class="dateRow">
+
+<div>
+<div class="label">날짜</div>
+<input class="input" id="date" type="date">
+</div>
+
+<div>
+<div class="label">기억에 남은 장소</div>
+<input class="input"
+       id="place"
+       maxlength="60"
+       placeholder="예: 동네 작은 카페">
+</div>
+
+</div>
+
+<div class="label">오늘의 한 장면</div>
+
+<div class="photoBox">
+
+<div class="photoPlaceholder" id="placeholder">
+<b>📷</b>
+사진 한 장을 골라주세요
+</div>
+
+<img id="preview"
+     class="hide"
+     alt="오늘의 사진">
+
+</div>
+
+<input id="photo"
+       type="file"
+       accept="image/*"
+       capture="environment"
+       class="hide">
+
+<button class="photoBtn" id="photoBtn">
+📸 사진 찍기 · 앨범에서 고르기
+</button>
+
+<div class="label">오늘의 열 줄</div>
+
+<textarea id="text"
+maxlength="1200"
+placeholder="무슨 일이 있었나요?
+왜 이 장소가 마음에 남았나요?
+그때 어떤 표정과 마음이었나요?
+
+길게 잘 쓰지 않아도 괜찮아요.
+오늘의 기억을 10줄 정도 남겨보세요."></textarea>
+
+<div class="counter">
+<span id="lineCount">0</span>줄 ·
+<span id="charCount">0</span>자
+</div>
+
+<div class="actions">
+<button class="secondary" id="clear">비우기</button>
+<button class="primary" id="save">오늘 기록 저장</button>
+</div>
+
+<div class="hint" style="margin-top:10px">
+기록과 사진은 이 기기의 브라우저에 저장됩니다.
+</div>
+
+</div>
+
+<div class="quote">
+“하루를 다 기억할 수는 없어도,<br>
+한 장면은 오래 남길 수 있다.”
+</div>
+
+</main>
+
+<main id="archive" class="hide">
+<div id="entries"></div>
+</main>
+
+<main id="stats" class="hide">
+
+<div class="card">
+
+<div class="statgrid">
+
+<div class="stat">
+<strong id="total">0</strong>
+전체 기록
+</div>
+
+<div class="stat">
+<strong id="month">0</strong>
+이번 달
+</div>
+
+<div class="stat">
+<strong id="streak">0</strong>
+연속 기록
+</div>
+
+</div>
+</div>
+
+<div class="card">
+
+<div class="label">내 기록 백업</div>
+
+<p class="hint">
+휴대폰을 바꾸거나 브라우저 데이터를 지우기 전에
+백업 파일을 저장해두세요.
+</p>
+
+<button class="primary" id="export">
+기록 백업 파일 받기
+</button>
+
+<input type="file"
+       id="importFile"
+       accept="application/json"
+       class="hide">
+
+<button class="photoBtn" id="importBtn">
+백업 파일 불러오기
+</button>
+
+</div>
+
+</main>
+
+<div class="footer">
+🌱 하루 한 장면, 하루 열 줄
+</div>
+
+</div>
+
+<script>
+
+const $ = id => document.getElementById(id);
+
+const KEY = 'haru_writing_entries_v1';
+
+let editing = null;
+let photoData = '';
+
+function unlock(){
+
+if($('pw').value === '1234'){
+
+sessionStorage.setItem('haru_access','ok');
+
+$('lock').style.display='none';
+
+}else{
+
+$('pwmsg').textContent='비밀번호가 맞지 않아요.';
+
+$('pw').value='';
+
+}
+
+}
+
+$('unlock').onclick=unlock;
+
+$('pw').addEventListener('keydown',e=>{
+if(e.key==='Enter') unlock();
+});
+
+if(sessionStorage.getItem('haru_access')==='ok'){
+$('lock').style.display='none';
+}
+
+function entries(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem(KEY) || '[]'
+);
+
+}catch{
+
+return [];
+
+}
+
+}
+
+function store(v){
+
+localStorage.setItem(
+KEY,
+JSON.stringify(v)
+);
+
+}
+
+function today(){
+
+const d=new Date();
+
+return new Date(
+d.getTime()-d.getTimezoneOffset()*60000
+)
+.toISOString()
+.slice(0,10);
+
+}
+
+$('date').value=today();
+
+document
+.querySelectorAll('.tabs button')
+.forEach(b=>{
+
+b.onclick=()=>{
+
+document
+.querySelectorAll('.tabs button')
+.forEach(x=>x.classList.remove('on'));
+
+b.classList.add('on');
+
+document
+.querySelectorAll('main')
+.forEach(x=>x.classList.add('hide'));
+
+$(b.dataset.tab)
+.classList.remove('hide');
+
+if(b.dataset.tab==='archive')
+renderEntries();
+
+if(b.dataset.tab==='stats')
+renderStats();
+
+};
+
+});
+
+$('photoBtn').onclick=()=>{
+$('photo').click();
+};
+
+$('photo').onchange=e=>{
+
+const f=e.target.files[0];
+
+if(!f) return;
+
+const r=new FileReader();
+
+r.onload=()=>compress(r.result);
+
+r.readAsDataURL(f);
+
+};
+
+function compress(src){
+
+const im=new Image();
+
+im.onload=()=>{
+
+const max=1100;
+
+const s=Math.min(
+1,
+max/Math.max(im.width,im.height)
+);
+
+const c=document.createElement('canvas');
+
+c.width=Math.round(im.width*s);
+c.height=Math.round(im.height*s);
+
+c.getContext('2d')
+.drawImage(
+im,
+0,
+0,
+c.width,
+c.height
+);
+
+photoData=
+c.toDataURL(
+'image/jpeg',
+.78
+);
+
+$('preview').src=photoData;
+
+$('preview')
+.classList
+.remove('hide');
+
+$('placeholder')
+.classList
+.add('hide');
+
+};
+
+im.src=src;
+
+}
+
+function count(){
+
+const t=$('text').value.trim();
+
+$('charCount').textContent=t.length;
+
+$('lineCount').textContent=
+t ? t.split(/\n/).length : 0;
+
+}
+
+$('text').oninput=count;
+
+function reset(){
+
+editing=null;
+photoData='';
+
+$('date').value=today();
+$('place').value='';
+$('text').value='';
+$('photo').value='';
+
+$('preview').src='';
+
+$('preview')
+.classList
+.add('hide');
+
+$('placeholder')
+.classList
+.remove('hide');
+
+$('save').textContent=
+'오늘 기록 저장';
+
+count();
+
+}
+
+$('clear').onclick=()=>{
+
+if(confirm('작성 중인 내용을 비울까요?')){
+reset();
+}
+
+};
+
+$('save').onclick=()=>{
+
+const date=$('date').value;
+
+const place=
+$('place').value.trim();
+
+const text=
+$('text').value.trim();
+
+if(!date || !place || !text){
+
+alert(
+'날짜, 장소, 오늘의 글을 모두 적어주세요.'
+);
+
+return;
+
+}
+
+if(!photoData){
+
+alert(
+'오늘 기억에 남은 사진을 한 장 넣어주세요.'
+);
+
+return;
+
+}
+
+let a=entries();
+
+const obj={
+
+id:editing || Date.now(),
+
+date,
+
+place,
+
+text,
+
+photo:photoData,
+
+updatedAt:Date.now()
+
+};
+
+if(editing){
+
+a=a.map(x=>
+x.id===editing ? obj : x
+);
+
+}else{
+
+a.unshift(obj);
+
+}
+
+try{
+
+store(a);
+
+}catch(e){
+
+alert(
+'사진 저장 공간이 부족해요.'
+);
+
+return;
+
+}
+
+alert(
+editing
+? '기록을 수정했어요.'
+: '오늘의 기록을 저장했어요. 🌿'
+);
+
+reset();
+
+document
+.querySelector(
+'[data-tab="archive"]'
+)
+.click();
+
+};
+
+function esc(s){
+
+return String(s)
+.replace(
+/[&<>"']/g,
+c=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#39;'
+}[c])
+);
+
+}
+
+function renderEntries(){
+
+const a=entries()
+.sort(
+(x,y)=>
+y.date.localeCompare(x.date)
+||
+y.id-x.id
+);
+
+const box=$('entries');
+
+if(!a.length){
+
+box.innerHTML=
+'<div class="empty">🌱<br><br>아직 기록이 없어요.<br>오늘의 한 장면부터 남겨보세요.</div>';
+
+return;
+
+}
+
+box.innerHTML='';
+
+a.forEach(x=>{
+
+const d=
+document.createElement('div');
+
+d.className='card entry';
+
+d.innerHTML=`
+
+<img src="${x.photo}">
+
+<div class="meta">
+
+<b>${x.date}</b>
+
+<div class="place">
+📍 ${esc(x.place)}
+</div>
+
+</div>
+
+<div class="text">
+${esc(x.text)}
+</div>
+
+<div class="miniBtns">
+
+<button class="edit">
+수정
+</button>
+
+<button class="danger del">
+삭제
+</button>
+
+</div>
+
+`;
+
+d.querySelector('.edit')
+.onclick=()=>editEntry(x.id);
+
+d.querySelector('.del')
+.onclick=()=>delEntry(x.id);
+
+box.appendChild(d);
+
+});
+
+}
+
+function editEntry(id){
+
+const x=
+entries()
+.find(v=>v.id===id);
+
+if(!x) return;
+
+editing=id;
+
+photoData=x.photo;
+
+$('date').value=x.date;
+$('place').value=x.place;
+$('text').value=x.text;
+
+$('preview').src=x.photo;
+
+$('preview')
+.classList
+.remove('hide');
+
+$('placeholder')
+.classList
+.add('hide');
+
+$('save').textContent=
+'수정 내용 저장';
+
+count();
+
+document
+.querySelector(
+'[data-tab="write"]'
+)
+.click();
+
+scrollTo(0,0);
+
+}
+
+function delEntry(id){
+
+if(
+!confirm(
+'이 기록을 삭제할까요?'
+)
+) return;
+
+store(
+entries()
+.filter(
+x=>x.id!==id
+)
+);
+
+renderEntries();
+
+}
+
+function renderStats(){
+
+const a=entries();
+
+const now=
+today().slice(0,7);
+
+$('total').textContent=
+a.length;
+
+$('month').textContent=
+a.filter(
+x=>x.date.startsWith(now)
+).length;
+
+const days=[
+...new Set(
+a.map(x=>x.date)
+)
+]
+.sort()
+.reverse();
+
+let st=0;
+
+const d=
+new Date(
+today()+'T12:00:00'
+);
+
+for(
+let i=0;
+i<400;
+i++
+){
+
+const s=
+new Date(
+d.getTime()
+-
+i*86400000
+)
+.toISOString()
+.slice(0,10);
+
+if(days.includes(s)){
+
+st++;
+
+}else if(i===0){
+
+continue;
+
+}else{
+
+break;
+
+}
+
+}
+
+$('streak').textContent=st;
+
+}
+
+$('export').onclick=()=>{
+
+const blob=
+new Blob(
+[
+JSON.stringify(entries())
+],
+{
+type:'application/json'
+}
+);
+
+const u=
+URL.createObjectURL(blob);
+
+const a=
+document.createElement('a');
+
+a.href=u;
+
+a.download=
+'하루글쓰기-백업-'
++
+today()
++
+'.json';
+
+a.click();
+
+URL.revokeObjectURL(u);
+
+};
+
+$('importBtn').onclick=()=>{
+$('importFile').click();
+};
+
+$('importFile').onchange=e=>{
+
+const f=e.target.files[0];
+
+if(!f) return;
+
+const r=new FileReader();
+
+r.onload=()=>{
+
+try{
+
+const a=
+JSON.parse(r.result);
+
+if(!Array.isArray(a))
+throw 0;
+
+store(a);
+
+alert(
+'백업 기록을 불러왔어요.'
+);
+
+renderStats();
+
+}catch{
+
+alert(
+'올바른 백업 파일이 아니에요.'
+);
+
+}
+
+};
+
+r.readAsText(f);
+
+};
+
+count();
+
+</script>
+
+</body>
+</html>
