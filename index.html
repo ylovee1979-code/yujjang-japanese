@@ -5,380 +5,391 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#fff7f8">
 <title>유짱의 매일일본어</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-
 <style>
 *{box-sizing:border-box}
-
-body{
- margin:0;
- font-family:"Gowun Dodum",Arial,sans-serif;
- background:#fff7f8;
- color:#352f35
-}
-
+body{margin:0;font-family:"Gowun Dodum",sans-serif;background:#fff7f8;color:#352f35}
 button,input,select{font-family:inherit}
-
-.lock{
- position:fixed;
- inset:0;
- z-index:9999;
- background:linear-gradient(145deg,#fff 0%,#fff1f4 60%,#ffdce4 100%);
- display:flex;
- align-items:center;
- justify-content:center;
- padding:24px
-}
-
-.lockbox{
- width:min(390px,100%);
- background:#fff;
- border:1px solid #f4dce2;
- border-radius:26px;
- padding:28px 22px;
- text-align:center;
- box-shadow:0 18px 45px #8c173022
-}
-
-.lockflower{font-size:45px}
-
-.lockbox h2{
- margin:8px 0 5px;
- color:#bc002d
-}
-
-.lockbox p{
- font-size:14px;
- color:#76666b
-}
-
-.lockbox input{
- width:100%;
- padding:15px;
- border:1px solid #efd5dc;
- border-radius:14px;
- font-size:20px;
- text-align:center;
- letter-spacing:6px;
- margin:12px 0
-}
-
-.lockbox button{
- width:100%;
- border:0;
- border-radius:15px;
- padding:14px;
- background:#bc002d;
- color:#fff;
- font-size:16px;
- font-weight:900
-}
-
-.lockmsg{
- min-height:20px;
- color:#bc002d;
- font-size:13px;
- margin-top:9px
-}
-
-.app{
- max-width:560px;
- margin:auto;
- min-height:100vh;
- background:#fff
-}
-
-header{
- position:relative;
- overflow:hidden;
- padding:26px 18px 22px;
- background:linear-gradient(145deg,#fff 0%,#fff5f7 58%,#ffe5eb 100%);
- border-bottom:4px solid #bc002d;
- border-radius:0 0 30px 30px
-}
-
-header:before{
- content:"";
- position:absolute;
- width:108px;
- height:108px;
- border-radius:50%;
- background:#bc002d;
- right:-28px;
- top:-28px
-}
-
-header:after{
- content:"🌸";
- position:absolute;
- right:68px;
- bottom:7px;
- font-size:36px
-}
-
-.small{
- font-size:13px;
- color:#9a3850;
- font-weight:800
-}
-
-h1{
- font-size:27px;
- margin:6px 0
-}
-
-.sub{
- font-size:14px;
- color:#76666b
-}
-
-.tabs{
- display:flex;
- gap:7px;
- padding:12px;
- background:#fff;
- position:sticky;
- top:0;
- z-index:5
-}
-
-.tabs button{
- flex:1;
- border:0;
- border-radius:14px;
- padding:11px 6px;
- background:#fff0f3;
- color:#8d4052;
- font-weight:900
-}
-
-.tabs .on{
- background:#bc002d;
- color:#fff
-}
-
-main{
- padding:0 16px 30px
-}
-
-.hide{display:none}
-
-.card{
- margin:14px 0;
- padding:17px;
- border:1px solid #f4dce2;
- border-radius:20px;
- background:#fff
-}
-
-.word{
- font-family:"Noto Sans JP",sans-serif;
- font-size:40px;
- font-weight:900;
- text-align:center;
- margin:10px 0 3px;
- color:#bc002d
-}
-
-.reading{
- font-family:"Noto Sans JP",sans-serif;
- text-align:center;
- font-size:20px;
- color:#74525c
-}
-
-.meaning{
- text-align:center;
- font-size:24px;
- font-weight:900;
- margin:18px 0
-}
-
-.tag{
- display:inline-block;
- padding:5px 10px;
- border-radius:99px;
- background:#fff0f3;
- color:#bc002d;
- font-size:12px;
- font-weight:900
-}
-
-.actions{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:9px;
- margin-top:14px
-}
-
-.btn{
- border:0;
- border-radius:16px;
- padding:14px;
- font-size:16px;
- font-weight:900
-}
-
-.know{
- background:#bc002d;
- color:#fff
-}
-
-.again{
- background:#ffe3e9;
- color:#8f2942
-}
-
-.next{
- background:#f7a9bb;
- color:#5b1d2c;
- width:100%;
- margin-top:10px
-}
-
-.progress{
- height:10px;
- background:#f7e7eb;
- border-radius:99px;
- overflow:hidden;
- margin-top:9px
-}
-
-.bar{
- height:100%;
- background:#bc002d;
- width:0
-}
-
-.row{
- display:flex;
- justify-content:space-between;
- gap:10px;
- align-items:center
-}
-
-.star{
- border:0;
- background:#fff;
- font-size:24px;
- color:#bc002d
-}
-
-.speak{
- border:0;
- background:#fff0f3;
- color:#bc002d;
- border-radius:999px;
- padding:9px 13px;
- font-size:14px;
- font-weight:900
-}
-
-.notice{
- font-size:12px;
- color:#7d6d72;
- background:#fff8da;
- border:1px solid #f4e7ae;
- padding:10px 12px;
- border-radius:12px;
- margin-top:10px
-}
+.lock{position:fixed;inset:0;z-index:9999;background:linear-gradient(145deg,#fff,#fff1f4 60%,#ffdce4);display:flex;align-items:center;justify-content:center;padding:24px}
+.lockbox{width:min(390px,100%);background:#fff;border:1px solid #f4dce2;border-radius:26px;padding:28px 22px;text-align:center;box-shadow:0 18px 45px #8c173022}
+.lockflower{font-size:45px}.lockbox h2{margin:8px 0 5px;color:#bc002d}.lockbox p{font-size:14px;color:#76666b}
+.lockbox input{width:100%;padding:15px;border:1px solid #efd5dc;border-radius:14px;font-size:20px;text-align:center;letter-spacing:6px;margin:12px 0}
+.lockbox button{width:100%;border:0;border-radius:15px;padding:14px;background:#bc002d;color:#fff;font-size:16px;font-weight:900}
+.lockmsg{min-height:20px;color:#bc002d;font-size:13px;margin-top:9px}
+.app{max-width:560px;margin:auto;min-height:100vh;background:#fff}
+header{position:relative;overflow:hidden;padding:26px 18px 22px;background:linear-gradient(145deg,#fff,#fff5f7 58%,#ffe5eb);border-bottom:4px solid #bc002d;border-radius:0 0 30px 30px}
+header:before{content:"";position:absolute;width:108px;height:108px;border-radius:50%;background:#bc002d;right:-28px;top:-28px}
+header:after{content:"🌸";position:absolute;right:68px;bottom:7px;font-size:36px}
+.small{font-size:13px;color:#9a3850;font-weight:800}
+h1{font-size:27px;margin:6px 0}.sub{font-size:14px;color:#76666b}
+.tabs{display:flex;gap:7px;padding:12px;background:#fff;position:sticky;top:0;z-index:5;border-bottom:1px solid #f4dce2}
+.tabs button{flex:1;border:0;border-radius:14px;padding:11px 6px;background:#fff0f3;color:#8d4052;font-weight:900}
+.tabs .on{background:#bc002d;color:#fff}
+main{padding:0 16px 30px}.hide{display:none}
+.card{margin:14px 0;padding:17px;border:1px solid #f4dce2;border-radius:20px;box-shadow:0 8px 20px #9c23400d;background:#fff}
+.word{font-family:"Noto Sans JP",sans-serif;font-size:40px;font-weight:900;text-align:center;margin:10px 0 3px;color:#bc002d}
+.reading{font-family:"Noto Sans JP",sans-serif;text-align:center;font-size:20px;color:#74525c}
+.meaning{text-align:center;font-size:24px;font-weight:900;margin:18px 0}
+.tag{display:inline-block;padding:5px 10px;border-radius:99px;background:#fff0f3;color:#bc002d;font-size:12px;font-weight:900}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.btn{border:0;border-radius:16px;padding:14px;font-size:16px;font-weight:900}
+.know{background:#bc002d;color:#fff}.again{background:#ffe3e9;color:#8f2942}
+.next{background:#f7a9bb;color:#5b1d2c;width:100%;margin-top:10px}
+.progress{height:10px;background:#f7e7eb;border-radius:99px;overflow:hidden;margin-top:9px}
+.bar{height:100%;background:#bc002d;width:0}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.star{border:0;background:#fff;font-size:24px;color:#bc002d}
+.speak{border:0;background:#fff0f3;color:#bc002d;border-radius:999px;padding:9px 13px;font-size:14px;font-weight:900}
+.search{width:100%;padding:13px;border:1px solid #efd5dc;border-radius:14px;font-size:15px;margin:5px 0 10px}
+.listitem{padding:13px 0;border-bottom:1px solid #f5e5e9}
+.jp{font-family:"Noto Sans JP",sans-serif;font-size:21px;font-weight:900;color:#a70028}
+.kr{font-size:14px;color:#75676c;margin-top:3px}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{padding:14px;border-radius:16px;text-align:center;background:#fff0f3}
+.num{font-size:24px;font-weight:900;margin-top:5px;color:#bc002d}
+.quizopt{width:100%;text-align:left;padding:13px;border:1px solid #efdce1;background:#fff;border-radius:13px;margin:7px 0;font-size:15px}
+.correct{background:#e4f5e7!important}.wrong{background:#ffe1e7!important}
+select{width:100%;padding:12px;border:1px solid #efd5dc;border-radius:13px;margin-bottom:10px}
+.notice{font-size:12px;color:#7d6d72;background:#fff8da;border:1px solid #f4e7ae;padding:10px 12px;border-radius:12px;margin-top:10px;line-height:1.5}
 </style>
 </head>
-
 <body>
 
 <div class="lock" id="lock">
- <div class="lockbox">
-  <div class="lockflower">🌸</div>
-  <h2>유짱의 매일일본어</h2>
-  <p>비밀번호를 입력하면 단어장을 시작할 수 있어요.</p>
-
-  <input id="passcode"
-         type="password"
-         inputmode="numeric"
-         maxlength="4"
-         placeholder="••••">
-
-  <button id="unlockBtn">입장하기</button>
-
-  <div class="lockmsg" id="lockmsg"></div>
- </div>
+<div class="lockbox">
+<div class="lockflower">🌸</div>
+<h2>유짱의 매일일본어</h2>
+<p>비밀번호를 입력하면 시작할 수 있어요.</p>
+<input id="passcode" type="password" inputmode="numeric" maxlength="4" placeholder="••••">
+<button id="unlockBtn">입장하기</button>
+<div class="lockmsg" id="lockmsg"></div>
+</div>
 </div>
 
 <div class="app">
-
 <header>
- <div class="small">一日日本語 · JLPT N4</div>
- <h1>유짱의 매일일본어 🇯🇵</h1>
- <div class="sub">
-  보고 · 외우고 · 퀴즈로 확인하는 N4 단어앱
- </div>
+<div class="small">一日日本語 · JLPT N4</div>
+<h1>유짱의 매일일본어 🇯🇵</h1>
+<div class="sub">보고 · 외우고 · 퀴즈로 확인하는 N4 단어앱</div>
 </header>
 
 <div class="tabs">
- <button class="on" data-tab="study">학습</button>
- <button data-tab="quiz">퀴즈</button>
- <button data-tab="words">단어장</button>
- <button data-tab="progress">진도</button>
+<button class="on" data-tab="study">학습</button>
+<button data-tab="quiz">퀴즈</button>
+<button data-tab="words">단어장</button>
+<button data-tab="progress">진도</button>
 </div>
 
 <main id="study">
-
 <div class="card">
-
- <div class="row">
-  <span class="tag" id="cat"></span>
-  <button class="star" id="starBtn">☆</button>
- </div>
-
- <div class="word" id="w"></div>
- <div class="reading" id="r"></div>
-
- <div style="text-align:center;margin-top:10px">
-  <button class="speak" id="speakWordBtn">
-   🔊 발음 듣기
-  </button>
- </div>
-
- <div class="meaning"
-      id="m"
-      style="visibility:hidden">
- </div>
-
- <button class="btn next" id="showMeaningBtn">
-  뜻 보기
- </button>
-
- <div class="actions">
-  <button class="btn again" id="againBtn">
-   다시 볼래
-  </button>
-
-  <button class="btn know" id="knowBtn">
-   외웠어요 ✓
-  </button>
- </div>
-
- <div class="notice">
-  카카오톡에서 발음이 나오지 않으면
-  Chrome 또는 Safari로 열어주세요.
- </div>
-
+<div class="row"><span class="tag" id="cat"></span><button class="star" id="starBtn">☆</button></div>
+<div class="word" id="w"></div>
+<div class="reading" id="r"></div>
+<div style="text-align:center;margin-top:10px"><button class="speak" id="speakWordBtn">🔊 발음 듣기</button></div>
+<div class="meaning" id="m" style="visibility:hidden"></div>
+<button class="btn next" id="showMeaningBtn">뜻 보기</button>
+<div class="actions">
+<button class="btn again" id="againBtn">다시 볼래</button>
+<button class="btn know" id="knowBtn">외웠어요 ✓</button>
 </div>
-
+<div class="notice">카카오톡에서 발음이 나오지 않으면 Chrome 또는 Safari로 열어주세요.</div>
+</div>
 <div class="card">
- <div class="row">
-  <b>오늘 학습 진도</b>
-  <span id="progText">0 / 0</span>
- </div>
-
- <div class="progress">
-  <div class="bar" id="bar"></div>
- </div>
+<div class="row"><b>학습 진도</b><span id="progText">0 / 0</span></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
 </div>
-
 </main>
+
+<main id="quiz" class="hide">
+<div class="card">
+<div class="small">4지선다 퀴즈</div>
+<div class="word" id="qw"></div>
+<div class="reading" id="qr"></div>
+<div style="text-align:center"><button class="speak" id="speakQuizBtn">🔊 발음 듣기</button></div>
+<div id="opts"></div>
+<div id="qmsg"></div>
+<button class="btn next" id="nextQuizBtn">다음 문제</button>
+</div>
+</main>
+
+<main id="words" class="hide">
+<div class="card">
+<input class="search" id="search" placeholder="단어, 읽기, 뜻 검색">
+<select id="filter">
+<option value="">전체</option>
+<option>명사</option><option>동사</option><option>형용사</option>
+<option>형용동사</option><option>부사</option>
+</select>
+<div id="list"></div>
+</div>
+</main>
+
+<main id="progress" class="hide">
+<div class="card">
+<div class="statgrid">
+<div class="stat">암기<div class="num" id="knownN">0</div></div>
+<div class="stat">다시<div class="num" id="againN">0</div></div>
+<div class="stat">즐겨찾기<div class="num" id="favN">0</div></div>
+</div>
+</div>
+<div class="card">
+<b>전체 암기율</b>
+<div class="progress"><div class="bar" id="totalBar"></div></div>
+<div id="totalText" class="small"></div>
+</div>
+</main>
+</div>
+
+<script>
+const WORDS=[
+["会う","あう","만나다","동사"],["青い","あおい","파랗다","형용사"],["赤い","あかい","빨갛다","형용사"],["明るい","あかるい","밝다","형용사"],["秋","あき","가을","명사"],["開く","あく","열리다","동사"],["開ける","あける","열다","동사"],["上げる","あげる","올리다","동사"],["朝","あさ","아침","명사"],["朝ご飯","あさごはん","아침밥","명사"],["足","あし","발, 다리","명사"],["明日","あした","내일","명사"],["遊ぶ","あそぶ","놀다","동사"],["暖かい","あたたかい","따뜻하다","형용사"],["頭","あたま","머리","명사"],["新しい","あたらしい","새롭다","형용사"],["暑い","あつい","덥다","형용사"],["熱い","あつい","뜨겁다","형용사"],["厚い","あつい","두껍다","형용사"],["雨","あめ","비","명사"],["洗う","あらう","씻다","동사"],["歩く","あるく","걷다","동사"],["言う","いう","말하다","동사"],["家","いえ","집","명사"],["行く","いく","가다","동사"],["医者","いしゃ","의사","명사"],["椅子","いす","의자","명사"],["忙しい","いそがしい","바쁘다","형용사"],["痛い","いたい","아프다","형용사"],["一日","いちにち","하루","명사"],["一番","いちばん","가장, 제일","부사"],["入口","いりぐち","입구","명사"],["入れる","いれる","넣다","동사"],["色","いろ","색","명사"],["歌","うた","노래","명사"],["歌う","うたう","노래하다","동사"],["生まれる","うまれる","태어나다","동사"],["海","うみ","바다","명사"],["売る","うる","팔다","동사"],["映画","えいが","영화","명사"],["英語","えいご","영어","명사"],["駅","えき","역","명사"],["鉛筆","えんぴつ","연필","명사"],["多い","おおい","많다","형용사"],["大きい","おおきい","크다","형용사"],["お菓子","おかし","과자","명사"],["お金","おかね","돈","명사"],["起きる","おきる","일어나다","동사"],["置く","おく","놓다","동사"],["送る","おくる","보내다","동사"],["遅い","おそい","늦다, 느리다","형용사"],["教える","おしえる","가르치다","동사"],["押す","おす","누르다","동사"],["覚える","おぼえる","외우다","동사"],["重い","おもい","무겁다","형용사"],["面白い","おもしろい","재미있다","형용사"],["泳ぐ","およぐ","수영하다","동사"],["終わる","おわる","끝나다","동사"],["会社","かいしゃ","회사","명사"],["買う","かう","사다","동사"],["返す","かえす","돌려주다","동사"],["帰る","かえる","돌아가다","동사"],["顔","かお","얼굴","명사"],["鍵","かぎ","열쇠","명사"],["書く","かく","쓰다","동사"],["学生","がくせい","학생","명사"],["傘","かさ","우산","명사"],["貸す","かす","빌려주다","동사"],["風","かぜ","바람","명사"],["風邪","かぜ","감기","명사"],["家族","かぞく","가족","명사"],["学校","がっこう","학교","명사"],["鞄","かばん","가방","명사"],["紙","かみ","종이","명사"],["髪","かみ","머리카락","명사"],["辛い","からい","맵다","형용사"],["軽い","かるい","가볍다","형용사"],["川","かわ","강","명사"],["可愛い","かわいい","귀엽다","형용사"],["考える","かんがえる","생각하다","동사"],["漢字","かんじ","한자","명사"],["木","き","나무","명사"],["聞く","きく","듣다, 묻다","동사"],["北","きた","북쪽","명사"],["汚い","きたない","더럽다","형용사"],["喫茶店","きっさてん","카페","명사"],["切手","きって","우표","명사"],["切符","きっぷ","표","명사"],["昨日","きのう","어제","명사"],["今日","きょう","오늘","명사"],["教室","きょうしつ","교실","명사"],["嫌い","きらい","싫어함","형용동사"],["切る","きる","자르다","동사"],["着る","きる","입다","동사"],["銀行","ぎんこう","은행","명사"],["薬","くすり","약","명사"],["口","くち","입","명사"],["靴","くつ","신발","명사"],["国","くに","나라","명사"],["暗い","くらい","어둡다","형용사"],["来る","くる","오다","동사"],["車","くるま","자동차","명사"],["黒い","くろい","검다","형용사"],["今朝","けさ","오늘 아침","명사"],["消す","けす","끄다, 지우다","동사"],["結婚","けっこん","결혼","명사"],["元気","げんき","건강하다","형용동사"],["公園","こうえん","공원","명사"],["声","こえ","목소리","명사"],["午後","ごご","오후","명사"],["午前","ごぜん","오전","명사"],["答える","こたえる","대답하다","동사"],["今年","ことし","올해","명사"],["言葉","ことば","말, 단어","명사"],["子供","こども","아이","명사"],["ご飯","ごはん","밥","명사"],["困る","こまる","곤란하다","동사"],["今月","こんげつ","이번 달","명사"],["今週","こんしゅう","이번 주","명사"],["財布","さいふ","지갑","명사"],["咲く","さく","피다","동사"],["散歩","さんぽ","산책","명사"],["時間","じかん","시간","명사"],["仕事","しごと","일","명사"],["辞書","じしょ","사전","명사"],["静か","しずか","조용하다","형용동사"],["質問","しつもん","질문","명사"],["自転車","じてんしゃ","자전거","명사"],["閉める","しめる","닫다","동사"],["写真","しゃしん","사진","명사"],["宿題","しゅくだい","숙제","명사"],["上手","じょうず","잘함","형용동사"],["食堂","しょくどう","식당","명사"],["知る","しる","알다","동사"],["白い","しろい","희다","형용사"],["新聞","しんぶん","신문","명사"],["好き","すき","좋아함","형용동사"],["少ない","すくない","적다","형용사"],["すぐ","すぐ","곧, 바로","부사"],["少し","すこし","조금","부사"],["涼しい","すずしい","선선하다","형용사"],["住む","すむ","살다","동사"],["座る","すわる","앉다","동사"],["生徒","せいと","학생","명사"],["狭い","せまい","좁다","형용사"],["洗濯","せんたく","세탁","명사"],["掃除","そうじ","청소","명사"],["外","そと","밖","명사"],["空","そら","하늘","명사"],["大学","だいがく","대학교","명사"],["大切","たいせつ","소중하다","형용동사"],["台所","だいどころ","부엌","명사"],["高い","たかい","높다, 비싸다","형용사"],["出す","だす","내다","동사"],["立つ","たつ","서다","동사"],["建物","たてもの","건물","명사"],["楽しい","たのしい","즐겁다","형용사"],["食べる","たべる","먹다","동사"],["卵","たまご","달걀","명사"],["誕生日","たんじょうび","생일","명사"],["近い","ちかい","가깝다","형용사"],["地下鉄","ちかてつ","지하철","명사"],["地図","ちず","지도","명사"],["使う","つかう","사용하다","동사"],["疲れる","つかれる","피곤해지다","동사"],["着く","つく","도착하다","동사"],["作る","つくる","만들다","동사"],["冷たい","つめたい","차갑다","형용사"],["強い","つよい","강하다","형용사"],["手","て","손","명사"],["出かける","でかける","외출하다","동사"],["手紙","てがみ","편지","명사"],["天気","てんき","날씨","명사"],["電気","でんき","전기","명사"],["電車","でんしゃ","전철","명사"],["電話","でんわ","전화","명사"],["遠い","とおい","멀다","형용사"],["時計","とけい","시계","명사"],["図書館","としょかん","도서관","명사"],["隣","となり","옆","명사"],["友達","ともだち","친구","명사"],["鳥","とり","새","명사"],["撮る","とる","찍다","동사"],["長い","ながい","길다","형용사"],["中","なか","안, 가운데","명사"],["夏","なつ","여름","명사"],["名前","なまえ","이름","명사"],["習う","ならう","배우다","동사"],["並ぶ","ならぶ","줄서다","동사"],["肉","にく","고기","명사"],["西","にし","서쪽","명사"],["荷物","にもつ","짐","명사"],["庭","にわ","정원","명사"],["脱ぐ","ぬぐ","벗다","동사"],["寝る","ねる","자다","동사"],["登る","のぼる","오르다","동사"],["飲み物","のみもの","음료","명사"],["飲む","のむ","마시다","동사"],["乗る","のる","타다","동사"],["歯","は","이","명사"],["入る","はいる","들어가다","동사"],["箱","はこ","상자","명사"],["橋","はし","다리","명사"],["始まる","はじまる","시작되다","동사"],["始める","はじめる","시작하다","동사"],["働く","はたらく","일하다","동사"],["話","はなし","이야기","명사"],["話す","はなす","말하다","동사"],["早い","はやい","빠르다, 이르다","형용사"],["春","はる","봄","명사"],["晴れ","はれ","맑음","명사"],["東","ひがし","동쪽","명사"],["低い","ひくい","낮다","형용사"],["飛行機","ひこうき","비행기","명사"],["左","ひだり","왼쪽","명사"],["人","ひと","사람","명사"],["暇","ひま","한가하다","형용동사"],["病院","びょういん","병원","명사"],["病気","びょうき","병","명사"],["昼","ひる","낮","명사"],["昼ご飯","ひるごはん","점심","명사"],["広い","ひろい","넓다","형용사"],["冬","ふゆ","겨울","명사"],["古い","ふるい","오래되다","형용사"],["部屋","へや","방","명사"],["勉強","べんきょう","공부","명사"],["便利","べんり","편리하다","형용동사"],["帽子","ぼうし","모자","명사"],["本","ほん","책","명사"],["本屋","ほんや","서점","명사"],["毎朝","まいあさ","매일 아침","명사"],["毎日","まいにち","매일","명사"],["毎晩","まいばん","매일 밤","명사"],["前","まえ","앞","명사"],["町","まち","마을","명사"],["待つ","まつ","기다리다","동사"],["窓","まど","창문","명사"],["丸い","まるい","둥글다","형용사"],["右","みぎ","오른쪽","명사"],["短い","みじかい","짧다","형용사"],["水","みず","물","명사"],["店","みせ","가게","명사"],["道","みち","길","명사"],["南","みなみ","남쪽","명사"],["耳","みみ","귀","명사"],["見る","みる","보다","동사"],["みんな","みんな","모두","대명사"],["難しい","むずかしい","어렵다","형용사"],["眼鏡","めがね","안경","명사"],["目","め","눈","명사"],["もう","もう","이미, 벌써","부사"],["持つ","もつ","가지다","동사"],["物","もの","물건","명사"],["問題","もんだい","문제","명사"],["休み","やすみ","휴일, 쉼","명사"],["休む","やすむ","쉬다","동사"],["安い","やすい","싸다","형용사"],["山","やま","산","명사"],["夕方","ゆうがた","저녁 무렵","명사"],["夕飯","ゆうはん","저녁밥","명사"],["有名","ゆうめい","유명하다","형용동사"],["雪","ゆき","눈","명사"],["ゆっくり","ゆっくり","천천히","부사"],["曜日","ようび","요일","명사"],["読む","よむ","읽다","동사"],["弱い","よわい","약하다","형용사"],["来月","らいげつ","다음 달","명사"],["来週","らいしゅう","다음 주","명사"],["来年","らいねん","내년","명사"],["料理","りょうり","요리","명사"],["旅行","りょこう","여행","명사"],["練習","れんしゅう","연습","명사"],["若い","わかい","젊다","형용사"],["分かる","わかる","알다, 이해하다","동사"],["忘れる","わすれる","잊다","동사"]
+];
+
+const $=id=>document.getElementById(id);
+let state=JSON.parse(localStorage.getItem("n4state")||'{"known":{},"again":{},"fav":{}}');
+let idx=Number(localStorage.getItem("n4idx")||0)%WORDS.length;
+let quizWord=null;
+
+function unlockApp(){
+ if($("passcode").value==="1234"){
+  sessionStorage.setItem("yujjang_access","ok");
+  $("lock").style.display="none";
+ }else{
+  $("lockmsg").textContent="비밀번호가 맞지 않아요.";
+  $("passcode").value="";
+ }
+}
+
+$("unlockBtn").onclick=unlockApp;
+$("passcode").addEventListener("keydown",e=>{
+ if(e.key==="Enter")unlockApp();
+});
+
+if(sessionStorage.getItem("yujjang_access")==="ok"){
+ $("lock").style.display="none";
+}
+
+function save(){
+ localStorage.setItem("n4state",JSON.stringify(state));
+ localStorage.setItem("n4idx",idx);
+}
+
+function switchTab(id,b){
+ document.querySelectorAll("main").forEach(x=>x.classList.add("hide"));
+ $(id).classList.remove("hide");
+ document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));
+ b.classList.add("on");
+ if(id==="words")renderList();
+ if(id==="progress")renderProgress();
+ if(id==="quiz")newQuiz();
+}
+
+document.querySelectorAll(".tabs button").forEach(b=>{
+ b.onclick=()=>switchTab(b.dataset.tab,b);
+});
+
+function render(){
+ const x=WORDS[idx];
+ $("w").textContent=x[0];
+ $("r").textContent=x[1];
+ $("m").textContent=x[2];
+ $("m").style.visibility="hidden";
+ $("cat").textContent=x[3];
+ $("starBtn").textContent=state.fav[idx]?"★":"☆";
+ updateProg();
+}
+
+$("showMeaningBtn").onclick=()=>$("m").style.visibility="visible";
+
+function mark(ok){
+ if(ok){
+  state.known[idx]=1;
+  delete state.again[idx];
+ }else{
+  state.again[idx]=1;
+  delete state.known[idx];
+ }
+ idx=(idx+1)%WORDS.length;
+ save();
+ render();
+}
+
+$("knowBtn").onclick=()=>mark(true);
+$("againBtn").onclick=()=>mark(false);
+
+$("starBtn").onclick=()=>{
+ state.fav[idx]?delete state.fav[idx]:state.fav[idx]=1;
+ save();
+ render();
+};
+
+function updateProg(){
+ const n=Object.keys(state.known).length+Object.keys(state.again).length;
+ $("progText").textContent=n+" / "+WORDS.length;
+ $("bar").style.width=(n/WORDS.length*100)+"%";
+}
+
+function renderList(){
+ const q=$("search").value.trim().toLowerCase();
+ const f=$("filter").value;
+ $("list").innerHTML="";
+
+ WORDS.forEach((x,i)=>{
+  if(f&&x[3]!==f)return;
+  if(q&&!x.join(" ").toLowerCase().includes(q))return;
+
+  const d=document.createElement("div");
+  d.className="listitem";
+  d.innerHTML=`
+   <div class="row">
+    <div>
+     <div class="jp">${x[0]} <span class="small">${x[1]}</span></div>
+     <div class="kr">${x[2]} · ${x[3]}</div>
+    </div>
+    <button class="speak">🔊</button>
+   </div>`;
+
+  d.querySelector("button").onclick=e=>{
+   e.stopPropagation();
+   speakJapanese(x[1]);
+  };
+
+  d.onclick=()=>{
+   idx=i;
+   save();
+   document.querySelector('[data-tab="study"]').click();
+   render();
+  };
+
+  $("list").appendChild(d);
+ });
+}
+
+$("search").oninput=renderList;
+$("filter").onchange=renderList;
+
+function renderProgress(){
+ const k=Object.keys(state.known).length;
+ const a=Object.keys(state.again).length;
+ const f=Object.keys(state.fav).length;
+
+ $("knownN").textContent=k;
+ $("againN").textContent=a;
+ $("favN").textContent=f;
+
+ const p=k/WORDS.length*100;
+ $("totalBar").style.width=p+"%";
+ $("totalText").textContent=`${WORDS.length}개 중 ${k}개 암기 · ${Math.round(p)}%`;
+}
+
+function newQuiz(){
+ $("qmsg").textContent="";
+
+ const qi=Math.floor(Math.random()*WORDS.length);
+ quizWord=WORDS[qi];
+
+ $("qw").textContent=quizWord[0];
+ $("qr").textContent=quizWord[1];
+
+ let pool=[quizWord[2]];
+
+ while(pool.length<4){
+  const mm=WORDS[Math.floor(Math.random()*WORDS.length)][2];
+  if(!pool.includes(mm))pool.push(mm);
+ }
+
+ pool.sort(()=>Math.random()-.5);
+ $("opts").innerHTML="";
+
+ pool.forEach(v=>{
+  const b=document.createElement("button");
+  b.className="quizopt";
+  b.textContent=v;
+
+  b.onclick=()=>{
+   document.querySelectorAll(".quizopt").forEach(z=>z.disabled=true);
+
+   if(v===quizWord[2]){
+    b.classList.add("correct");
+    $("qmsg").textContent="정답! 🎉";
+   }else{
+    b.classList.add("wrong");
+    $("qmsg").textContent="정답: "+quizWord[2];
+   }
+  };
+
+  $("opts").appendChild(b);
+ });
+}
+
+$("nextQuizBtn").onclick=newQuiz;
+
+/* 일본어 음성 - 보통 속도 */
+let voices=[];
+
+function loadVoices(){
+ if("speechSynthesis" in window){
+  voices=window.speechSynthesis.getVoices();
+ }
+}
+
+if("speechSynthesis" in window){
+ loadVoices();
+ window.speechSynthesis.onvoiceschanged=loadVoices;
+}
+
+function speakJapanese(text){
+
+ if(!("speechSynthesis" in window)){
+  alert("Chrome 또는 Safari에서 열어주세요.");
+  return;
+ }
+
+ window.speechSynthesis.cancel();
+ window.speechSynthesis.resume();
+
+ const u=new SpeechSynthesisUtterance(text);
+
+ u.lang="ja-JP";
+
+ /* 보통 발음 속도 */
+ u.rate=0.82;
+
+ u.pitch=1;
+ u.volume=1;
+
+ const all=window.speechSynthesis.getVoices();
+
+ const ja=all.filter(v=>
+  v.lang&&v.lang.toLowerCase().startsWith("ja")
+ );
+
+ const preferred=
+  ja.find(v=>
+   /Google 日本語|Nanami|Kyoko|Otoya|Haruka|Japanese/i.test(v.name)
+  )||ja[0];
+
+ if(preferred)u.voice=preferred;
+
+ window.speechSynthesis.speak(u);
+
+ setTimeout(()=>{
+  window.speechSynthesis.resume();
+ },120);
+}
+
+/* 한자가 아니라 히라가나 읽기를 발음 */
+$("speakWordBtn").onclick=()=>{
+ speakJapanese(WORDS[idx][1]);
+};
+
+$("speakQuizBtn").onclick=()=>{
+ if(quizWord)speakJapanese(quizWord[1]);
+};
+
+render();
+</script>
+</body>
+</html>
